@@ -386,7 +386,7 @@ fi
 if ! hash jq 2>/dev/null; then
     if [ "${INSTALL_MISSING_DEPENDENCIES}" == "yes" ] && [ "${OSTYPE}" == "linux-gnu" ]; then
         recho "Installing jq..."
-        download https://github.com/patrick0057/jq/releases/download/jq-1.6/jq-linux64
+        download https://github.com/cooloo9871/jq/releases/download/jq-1.6/jq-linux64
         if [ "${LOCALBINARY}" != "yes" ]; then
             install -o root -g root -m 755 jq-linux64 /bin/jq
         else
@@ -399,7 +399,7 @@ if ! hash jq 2>/dev/null; then
         grecho '!!!jq was not found!!!'
         grecho "!!!download and install with:"
         grecho "Linux users (Run script with option -y to install automatically):"
-        grecho "curl -L -O https://github.com/patrick0057/jq/releases/download/jq-1.6/jq-linux64"
+        grecho "curl -L -O https://github.com/cooloo9871/jq/releases/download/jq-1.6/jq-linux64"
         grecho "chmod +x jq-linux64"
         grecho "mv jq-linux64 /bin/jq"
         exit 1
@@ -413,7 +413,6 @@ if ! hash base64 2>/dev/null; then
         mv base64 "$TMPDIR"
     else
         echo '!!!base64 was not found!!!'
-        echo 'You can download it from https://github.com/patrick0057/kubecert/raw/master/base64 manually and put it in your path or pass -y to auto install.'
         exit 1
     fi
 fi

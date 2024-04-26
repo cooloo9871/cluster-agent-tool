@@ -1,6 +1,5 @@
 # cluster-agent-tool.sh
 ## This script will help you retrieve redeployment commands for rancher agents as well as docker run commands to start new agent containers.
-
 ```
 curl -LO https://github.com/cooloo9871/cluster-agent-tool/raw/main/cluster-agent-tool.sh
 ```

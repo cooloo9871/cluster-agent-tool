@@ -56,7 +56,7 @@ Usage: bash ${SCRIPT_NAME}
 
     -k <kubecfg>    Manually set the full path to your kube config instead of generating one for you.  (Optional)
             Example: -k'/home/bob/.kube/config'
-
+    
     -z <sslprefix>  Set this if kube config generation fails because it can't lookup your sslprefix.  This is usually /etc/kubernetes/.
             Example: -z'/etc/kubernetes/'
 "
@@ -574,10 +574,10 @@ if [[ "${APPLY_YAML}" == "yes" ]] || [[ "${RUN_AGENT}" == "yes" ]]; then
                 NEW_INSECURECMD=$(sed -r 's, \| kubectl apply -f -,,g' <<< ${INSECURECOMMAND})
                 NEW_INSECURECMD=$(sed -r 's,curl --insecure -sfL ,,g' <<< ${NEW_INSECURECMD})
                 NEW_INSECURECMD=$(sed -r 's,curl --insecure -sfL ,,g' <<< ${NEW_INSECURECMD})
-
+                
                 INSECURECMD_FILE=$(sed -r 's,.*import/(.*),\1,g' <<< ${NEW_INSECURECMD})
                 export INSECURECMD_FILE
-
+                
                 docker run -it --rm alpine wget -q --no-check-certificate -O - "${NEW_INSECURECMD} > ${TMPDIR}/${INSECURECMD_FILE}"
                 dos2unix "${TMPDIR}/${INSECURECMD_FILE}"
                 kubectl apply -f "${TMPDIR}/${INSECURECMD_FILE}"
